@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import "app/shared/mixins.scss";
+@import "app/shared/functions.scss";
+
+$primary-color: #0d5f9b;
+$secondary-color: rgb(202, 199, 199);
+$white-color: #fff;
+$green-color: #035022;
+$orange-color: #D1A602;
+$dark-grey-color: #444;
+
+@include style-button("next", bold, $white-color, $green-color);
+@include style-button("previous", bold, $white-color, $orange-color);
+@include style-button("submit", bold, $white-color, $primary-color);
+
+.center-horizontally {
+  position: absolute;
+  left: 50%;
+}
+
+.border {
+  border-style: outset;
+  border: 4mm ridge rgba(211, 220, 50, .6);
+  box-shadow: 0 0 0 1px #FF5722;
+  outline: 1px solid #999;
+}
+
+label.radio-box {
+  display: flex;
+  background-color: lighten($secondary-color, 10);
+  padding: 10px;
+  font-family: sans-serif, Arial;
+  font-size: 20px;
+  border: 1px solid $dark-grey-color;
+  border-radius: 5px;
+
+  & > input {
+    position: fixed;
+    width: 0;
+    opacity: 0;
+  }
+
+  &:has(input:hover) {
+    background-color: $secondary-color;
+    border: 5px inset;
+  }
+
+  &:has(input:checked) {
+    background-color:#bfb;
+    border: 10px outset #4c4;
+  }
+}

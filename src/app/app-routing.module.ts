@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {ProductSuggesterComponent} from "./product-suggester/product-suggester.component";
+import {QuestionsFormComponent} from "./questions/questions-form/questions-form.component";
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/product-suggester', pathMatch: 'full'},
-  {path: 'product-suggester', component: ProductSuggesterComponent},
+  {path: '', redirectTo: '/questions-form', pathMatch: 'full'},
+  {path: 'questions-form', component: QuestionsFormComponent},
 ];
 
 @NgModule({
