@@ -53,6 +53,10 @@ export class QuestionsFormComponent {
     return FormProgressState;
   }
 
+  get stepNames() {
+    return ['Age', 'Studies', 'Income'];
+  }
+
 }
 
 enum FormProgressState {

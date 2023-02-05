@@ -1,3 +1,4 @@
+<app-progress-chain [stepNames]="stepNames"></app-progress-chain>
 <form class="questions-form" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
   <div [ngSwitch]="formProgressState">
     <div *ngSwitchCase="getFormProgressStates().AGE">

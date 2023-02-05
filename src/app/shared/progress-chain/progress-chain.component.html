@@ -1,0 +1,12 @@
+<div class="progress">
+  <ng-container *ngFor="let stepName of stepNames; let i=index;">
+    <div class="circle"
+         [ngClass]="{'active': isCurrentSelection(i), 'done': isBeforeCurrentSelection(i)}"
+         (click)="selectChainMember(i)" >
+      <span class="label">{{i + 1}}</span>
+      <span class="title">{{stepName}}</span>
+    </div>
+    <span *ngIf="i < (stepNames.length - 1)"
+          [ngClass]="{'done': isBeforeCurrentSelection(i)}" class="bar"></span>
+  </ng-container>
+</div>
