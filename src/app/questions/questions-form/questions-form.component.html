@@ -1,28 +1,31 @@
-<form class="center-horizontally" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
+<form class="questions-form" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
   <div [ngSwitch]="formProgressState">
     <div *ngSwitchCase="getFormProgressStates().AGE">
-      <h5 class="border">How old are you?</h5>
-      <div *ngFor="let ageRange of ageRanges">
+      <h3>How old are you?</h3>
+      <hr/>
+      <div class="questions-padding" *ngFor="let ageRange of ageRanges">
         <label class="radio-box">
-          <input type="radio" [value]="ageRange" formControlName="ageRangeControl" />
-          {{ageRange}}
+          <input type="radio" [value]="ageRange" formControlName="ageRangeControl"/>
+          <span>{{ageRange}}</span>
         </label>
       </div>
     </div>
 
-      <div *ngSwitchCase="getFormProgressStates().STUDYING">
-        <h5 class="border">Are you currently studying?</h5>
-        <div *ngFor="let studyingStatus of studyingStatuses">
-          <label class="radio-box">
-            <input type="radio" [value]="studyingStatus" formControlName="isStudyingControl"/>
-            {{studyingStatus}}
-          </label>
-        </div>
+    <div *ngSwitchCase="getFormProgressStates().STUDYING">
+      <h3>Are you currently studying?</h3>
+      <hr/>
+      <div class="questions-padding" *ngFor="let studyingStatus of studyingStatuses">
+        <label class="radio-box">
+          <input type="radio" [value]="studyingStatus" formControlName="isStudyingControl"/>
+          {{studyingStatus}}
+        </label>
       </div>
+    </div>
 
     <div *ngSwitchCase="getFormProgressStates().INCOME">
-      <h5 class="border">What's your income range?</h5>
-      <div *ngFor="let incomeRange of incomeRanges">
+      <h3>What's your income range?</h3>
+      <hr/>
+      <div class="questions-padding" *ngFor="let incomeRange of incomeRanges">
         <label class="radio-box">
           <input type="radio" [value]="incomeRange" formControlName="incomeRangeControl"/>
           {{incomeRange}}
@@ -30,7 +33,13 @@
       </div>
     </div>
   </div>
-  <button class="button-previous" type="button" *ngIf="canMoveToPreviousState()" (click)="moveToPreviousState()">Previous</button>
-  <button class="button-next" type="button" *ngIf="canMoveToNextState()" (click)="moveToNextState()">Next</button>
-  <button class="button-submit" type="submit" *ngIf="!canMoveToNextState()" (click)="submitForm()">Submit</button>
+  <hr/>
+  <div class="questions-padding child-full-width child-padding">
+    <button class="button-previous" type="button" *ngIf="canMoveToPreviousState()" (click)="moveToPreviousState()">
+      Previous
+    </button>
+    <button class="button-next" type="button" *ngIf="canMoveToNextState()" (click)="moveToNextState()">Next
+    </button>
+    <button class="button-submit" type="submit" *ngIf="!canMoveToNextState()" (click)="submitForm()">Submit</button>
+  </div>
 </form>

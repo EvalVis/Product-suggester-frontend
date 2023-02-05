@@ -7,24 +7,19 @@ $white-color: #fff;
 $green-color: #035022;
 $orange-color: #D1A602;
 $dark-grey-color: #444;
+$button-font-size: 30px;
 
-@include style-button("next", bold, $white-color, $green-color);
-@include style-button("previous", bold, $white-color, $orange-color);
-@include style-button("submit", bold, $white-color, $primary-color);
+@include style-button("next", bold, $white-color, $green-color, $button-font-size);
+@include style-button("previous", bold, $white-color, $orange-color, $button-font-size);
+@include style-button("submit", bold, $white-color, $primary-color, $button-font-size);
 
 .center-horizontally {
   position: absolute;
   left: 50%;
 }
 
-.border {
-  border-style: outset;
-  border: 4mm ridge rgba(211, 220, 50, .6);
-  box-shadow: 0 0 0 1px #FF5722;
-  outline: 1px solid #999;
-}
-
 label.radio-box {
+  cursor: pointer;
   display: flex;
   background-color: lighten($secondary-color, 10);
   padding: 10px;
@@ -48,4 +43,12 @@ label.radio-box {
     background-color:#bfb;
     border: 10px outset #4c4;
   }
+
+  & > span {
+    margin: auto;
+  }
+}
+
+.child-full-width > * {
+  width: 100%;
 }

@@ -9,7 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionsFormComponent
+    QuestionsFormComponent,
   ],
   imports: [
     BrowserModule,

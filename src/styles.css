@@ -1,40 +1,34 @@
 button.button-next {
   cursor: pointer;
   font-weight: bold;
+  font-size: 30px;
   color: #fff;
   background-color: #035022;
 }
 button.button-next:hover {
   background-color: #023718;
 }
-button.button-next:focus {
-  background-color: #011f0d;
-}
 
 button.button-previous {
   cursor: pointer;
   font-weight: bold;
+  font-size: 30px;
   color: #fff;
   background-color: #D1A602;
 }
 button.button-previous:hover {
   background-color: #b89202;
 }
-button.button-previous:focus {
-  background-color: #9e7e02;
-}
 
 button.button-submit {
   cursor: pointer;
   font-weight: bold;
+  font-size: 30px;
   color: #fff;
   background-color: #0d5f9b;
 }
 button.button-submit:hover {
   background-color: #0b5183;
-}
-button.button-submit:focus {
-  background-color: #09426c;
 }
 
 .center-horizontally {
@@ -42,14 +36,8 @@ button.button-submit:focus {
   left: 50%;
 }
 
-.border {
-  border-style: outset;
-  border: 4mm ridge rgba(211, 220, 50, 0.6);
-  box-shadow: 0 0 0 1px #FF5722;
-  outline: 1px solid #999;
-}
-
 label.radio-box {
+  cursor: pointer;
   display: flex;
   background-color: #e3e1e1;
   padding: 10px;
@@ -70,6 +58,13 @@ label.radio-box:has(input:hover) {
 label.radio-box:has(input:checked) {
   background-color: #bfb;
   border: 10px outset #4c4;
+}
+label.radio-box > span {
+  margin: auto;
+}
+
+.child-full-width > * {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */
