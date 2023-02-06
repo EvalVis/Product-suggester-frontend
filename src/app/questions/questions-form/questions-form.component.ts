@@ -1,7 +1,10 @@
-import {Component} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProductSuggestionService} from "../../services/product-suggestion.service";
 import {Answer} from "../../models/answer.model";
+import {Subject} from "rxjs";
+import {Product} from "../../models/product.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-questions-form',
@@ -18,7 +21,8 @@ export class QuestionsFormComponent {
 
   questionsForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private productSuggestionService: ProductSuggestionService) {
+  constructor(private formBuilder: FormBuilder, private productSuggestionService: ProductSuggestionService,
+              private router: Router) {
     this.formProgressState = FormProgressState.AGE;
 
     this.questionsForm = this.formBuilder.group({
@@ -34,9 +38,8 @@ export class QuestionsFormComponent {
       formResult['ageRangeControl'],
       formResult['isStudyingControl'],
       formResult['incomeRangeControl']);
-      this.productSuggestionService.getSuggestions(answer).subscribe(products => {
-        console.log(products);
-      });
+    this.productSuggestionService.getSuggestions(answer);
+    this.router.navigate(["/product/suggestions"]);
   }
 
   moveToNextState(): void {

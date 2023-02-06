@@ -7,12 +7,16 @@ import { QuestionsFormComponent } from './questions/questions-form/questions-for
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProgressChainComponent } from './shared/progress-chain/progress-chain.component';
 import {HttpClientModule} from "@angular/common/http";
+import { HeaderComponent } from './header/header.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionsFormComponent,
-    ProgressChainComponent
+    ProgressChainComponent,
+    HeaderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
