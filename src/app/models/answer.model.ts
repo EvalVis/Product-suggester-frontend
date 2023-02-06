@@ -1,6 +1,6 @@
-export class Questions {
+export class Answer {
 
-  constructor(private _ageRange: string, private _isStudent: boolean, private _incomeRange: string) {
+  constructor(private _ageRange: string, private _studying: boolean, private _incomeRange: string) {
   }
 
 
@@ -12,12 +12,12 @@ export class Questions {
     this._ageRange = value;
   }
 
-  get isStudent(): boolean {
-    return this._isStudent;
+  get isStudying(): boolean {
+    return this._studying;
   }
 
-  set isStudent(value: boolean) {
-    this._isStudent = value;
+  set isStudying(value: boolean) {
+    this._studying = value;
   }
 
   get incomeRange(): string {

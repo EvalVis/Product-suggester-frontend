@@ -18,7 +18,7 @@
       <div class="questions-padding" *ngFor="let studyingStatus of studyingStatuses">
         <label class="radio-box">
           <input type="radio" [value]="studyingStatus" formControlName="isStudyingControl"/>
-          {{studyingStatus}}
+          {{studyingStatus === true ? 'Yes': 'No'}}
         </label>
       </div>
     </div>
@@ -41,6 +41,6 @@
     </button>
     <button class="button-next" type="button" *ngIf="canMoveToNextState()" (click)="moveToNextState()">Next
     </button>
-    <button class="button-submit" type="submit" *ngIf="!canMoveToNextState()" (click)="submitForm()">Submit</button>
+    <button class="button-submit" type="submit" *ngIf="!canMoveToNextState()">Submit</button>
   </div>
 </form>

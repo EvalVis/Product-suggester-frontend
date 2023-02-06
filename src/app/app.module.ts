@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuestionsFormComponent } from './questions/questions-form/questions-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProgressChainComponent } from './shared/progress-chain/progress-chain.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProgressChainComponent } from './shared/progress-chain/progress-chain.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
