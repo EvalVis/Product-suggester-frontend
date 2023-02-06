@@ -17,4 +17,8 @@ button {
   padding: 20px 0;
 }
 
+.red-background:hover {
+  background-color: red;
+}
+
 /*# sourceMappingURL=questions-form.component.css.map */

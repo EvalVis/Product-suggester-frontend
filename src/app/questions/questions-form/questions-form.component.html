@@ -34,13 +34,16 @@
       </div>
     </div>
   </div>
+  <div *ngIf="!currentStepValid() && canShowErrorMessage" style="color:red; font-size: 30px; text-align: center">Please select an option</div>
   <hr/>
   <div class="questions-padding child-full-width child-padding">
     <button class="button-previous" type="button" *ngIf="canMoveToPreviousState()" (click)="moveToPreviousState()">
       Previous
     </button>
-    <button class="button-next" type="button" *ngIf="canMoveToNextState()" (click)="moveToNextState()">Next
+    <button name="next-button" [ngClass]="{'red-background': !currentStepValid()}"
+            class="button-next" type="button" *ngIf="!lastState()" (click)="moveToNextState()">
+      Next
     </button>
-    <button class="button-submit" type="submit" *ngIf="!canMoveToNextState()">Submit</button>
+    <button class="button-submit" type="submit" *ngIf="lastState()">Submit</button>
   </div>
 </form>

@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 })
 export class QuestionsFormComponent {
 
+  canShowErrorMessage: boolean = false;
   ageRanges = ["0-17", "18-64", "65+"];
   studyingStatuses = [true, false];
   incomeRanges = ["0", "1-12000", "12001-40000", "40001+"];
@@ -33,6 +34,11 @@ export class QuestionsFormComponent {
   }
 
   submitForm(): void {
+    if(!this.currentStepValid()) {
+      this.canShowErrorMessage = true;
+      return;
+    }
+    this.canShowErrorMessage = false;
     let formResult = this.questionsForm.value;
     const answer = new Answer(
       formResult['ageRangeControl'],
@@ -43,7 +49,9 @@ export class QuestionsFormComponent {
   }
 
   moveToNextState(): void {
+    this.canShowErrorMessage = true;
     if(this.canMoveToNextState()) {
+      this.canShowErrorMessage = false;
       this.formProgressState++;
     }
   }
@@ -55,11 +63,28 @@ export class QuestionsFormComponent {
   }
 
   canMoveToNextState(): boolean {
-    return this.formProgressState !== FormProgressState.INCOME;
+    return this.currentStepValid() && !this.lastState();
   }
 
   canMoveToPreviousState(): boolean {
     return this.formProgressState !== FormProgressState.AGE;
+  }
+
+  lastState(): boolean {
+    return this.formProgressState === FormProgressState.INCOME
+  }
+
+  currentStepValid(): boolean {
+    if(this.formProgressState === FormProgressState.AGE) {
+      // @ts-ignore
+      return this.questionsForm.get('ageRangeControl').valid;
+    }
+    else if(this.formProgressState === FormProgressState.STUDYING) {
+      // @ts-ignore
+      return this.questionsForm.get('isStudyingControl').valid;
+    }
+    // @ts-ignore
+    return this.questionsForm.get('incomeRangeControl').valid;
   }
 
   getFormProgressStates() {
