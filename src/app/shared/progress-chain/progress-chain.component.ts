@@ -6,12 +6,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./progress-chain.component.scss']
 })
 export class ProgressChainComponent {
-  @Input() stepNames: string[];
-  selectedChainMember = 0;
-
-  constructor() {
-    this.stepNames = [];
-  }
+  @Input() stepNames: string[] = [];
+  @Input() selectedChainMember = 0;
 
   isCurrentSelection(index: number) : boolean {
     return this.selectedChainMember === index;
