@@ -1,8 +1,7 @@
 <div class="progress">
   <ng-container *ngFor="let stepName of stepNames; let i=index;">
     <div class="circle"
-         [ngClass]="{'active': isCurrentSelection(i), 'done': isBeforeCurrentSelection(i)}"
-         (click)="selectChainMember(i)" >
+         [ngClass]="{'active': isCurrentSelection(i), 'done': isBeforeCurrentSelection(i)}">
       <span class="label">{{i + 1}}</span>
       <span class="title">{{stepName}}</span>
     </div>

@@ -13,20 +13,12 @@ export class ProgressChainComponent {
     this.stepNames = [];
   }
 
-  selectChainMember(index: number) {
-    this.selectedChainMember = index;
-  }
-
   isCurrentSelection(index: number) : boolean {
     return this.selectedChainMember === index;
   }
 
   isBeforeCurrentSelection(index: number) : boolean {
     return index < this.selectedChainMember;
-  }
-
-  isAfterCurrentSelection(index: number) : boolean {
-    return !(this.isBeforeCurrentSelection(index) || this.isCurrentSelection(index));
   }
 
 }
