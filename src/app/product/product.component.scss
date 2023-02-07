@@ -1,0 +1,21 @@
+@import "../shared/colors";
+
+.product-list > li {
+  display: flex;
+  background-color: lighten($secondary-color, 10);
+  padding: 10px;
+  font-family: sans-serif, Arial;
+  font-size: 20px;
+  border: 1px solid $dark-grey-color;
+  border-radius: 5px;
+
+  & > input {
+    position: fixed;
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.child-full-width > * {
+  width: 100%;
+}

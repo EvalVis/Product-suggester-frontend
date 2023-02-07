@@ -1,13 +1,6 @@
-@import "app/shared/mixins.scss";
-@import "app/shared/functions.scss";
-
-$primary-color: #0d5f9b;
-$secondary-color: rgb(202, 199, 199);
-$white-color: #fff;
-$green-color: #035022;
-$orange-color: #D1A602;
-$dark-grey-color: #444;
-$button-font-size: 30px;
+@import "app/shared/mixins";
+@import "app/shared/functions";
+@import "app/shared/colors";
 
 @include style-button("next", bold, $white-color, $green-color, $button-font-size);
 @include style-button("previous", bold, $white-color, $orange-color, $button-font-size);

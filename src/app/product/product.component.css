@@ -1,3 +1,20 @@
+.product-list > li {
+  display: flex;
+  background-color: #e3e1e1;
+  padding: 10px;
+  font-family: sans-serif, Arial;
+  font-size: 20px;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+.product-list > li > input {
+  position: fixed;
+  width: 0;
+  opacity: 0;
+}
 
+.child-full-width > * {
+  width: 100%;
+}
 
 /*# sourceMappingURL=product.component.css.map */
