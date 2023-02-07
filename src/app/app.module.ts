@@ -9,6 +9,7 @@ import { ProgressChainComponent } from './shared/progress-chain/progress-chain.c
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
+import { ProductAdderComponent } from './product-adder/product-adder.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductComponent } from './product/product.component';
     QuestionsFormComponent,
     ProgressChainComponent,
     HeaderComponent,
-    ProductComponent
+    ProductComponent,
+    ProductAdderComponent
   ],
   imports: [
     BrowserModule,
