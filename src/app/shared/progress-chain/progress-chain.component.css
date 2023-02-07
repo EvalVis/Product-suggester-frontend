@@ -10,7 +10,7 @@
   background: #fff;
   width: 40px;
   height: 40px;
-  border-radius: 40px;
+  border-radius: 0;
   border: 1px solid #d5d5da;
 }
 
@@ -31,10 +31,17 @@
   width: 32px;
   height: 32px;
   line-height: 32px;
-  border-radius: 32px;
   margin-top: 3px;
   color: #b5b5ba;
   font-size: 17px;
+  border-radius: 0;
+}
+
+.circle.active > .label {
+  animation-name: rounding;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .progress .circle .title {
@@ -47,10 +54,6 @@
 .progress .bar.done,
 .progress .circle.done {
   background: #eee;
-}
-
-.progress .bar.active {
-  background: linear-gradient(to right, #EEE 40%, #FFF 60%);
 }
 
 .progress .circle.done .label {
@@ -71,6 +74,15 @@
 
 .progress .circle.active .title {
   color: #0c95be;
+}
+
+@keyframes rounding {
+  from {
+    border-radius: 0;
+  }
+  to {
+    border-radius: 50%;
+  }
 }
 
 /*# sourceMappingURL=progress-chain.component.css.map */
