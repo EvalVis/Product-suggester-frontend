@@ -1,0 +1,10 @@
+<div style="padding: 10px 10px 20px 10px" class="child-full-width child-padding">
+  <button class="button-previous" type="button" *ngIf="canMoveToPreviousState" (click)="moveToPreviousState()">
+    Previous
+  </button>
+  <button name="next-button" [ngClass]="{'red-background': !isCurrentStepValid}"
+          class="button-next" type="button" *ngIf="!isLastState" (click)="moveToNextState()">
+    Next
+  </button>
+  <button class="button-submit" type="submit" *ngIf="isLastState">Submit</button>
+</div>
