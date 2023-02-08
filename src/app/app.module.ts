@@ -12,6 +12,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductAdderComponent } from './product-adder/product-adder.component';
 import { QuestionsFormComponent } from './questions/questions-form/questions-form.component';
 import { ButtonsComponent } from './forms/buttons/buttons.component';
+import { CreateProductFormComponent } from './forms/create-product-form/create-product-form.component';
+import {BaseFormComponent} from "./forms/base-form/base-form.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ButtonsComponent } from './forms/buttons/buttons.component';
     ProductComponent,
     ProductAdderComponent,
     QuestionsFormComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    CreateProductFormComponent,
+    BaseFormComponent
   ],
   imports: [
     BrowserModule,

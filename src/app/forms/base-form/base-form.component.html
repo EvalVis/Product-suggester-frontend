@@ -1,0 +1,17 @@
+<app-progress-chain [stepNames]="steps" [selectedChainMember]="formProgressTracker"></app-progress-chain>
+<form class="questions-form" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
+  <app-questions *ngIf="questionsForm.get(formControlNames[getCurrentState()])"
+                 [question]="questions[getCurrentState()]"
+                 [answers]="answers[getCurrentState()]"
+                 [formCtrl]="$any(questionsForm.get(formControlNames[getCurrentState()]))"
+                 [canShowErrorEvent]="canShowErrorEvent"
+                 [isCurrentStepValid]="isCurrentStepValid()">
+  </app-questions>
+  <hr/>
+  <app-buttons [isLastState]="isLastState()"
+               [isCurrentStepValid]="isCurrentStepValid()"
+               [canMoveToPreviousState]="canMoveToPreviousState()"
+               (moveToPreviousStateEvent)="moveToPreviousState()"
+               (moveToNextStateEvent)="moveToNextState()">
+  </app-buttons>
+</form>

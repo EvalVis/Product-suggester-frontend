@@ -7,9 +7,9 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ButtonsComponent {
 
-  @Input() isLastState: boolean | undefined;
-  @Input() isCurrentStepValid: boolean | undefined;
-  @Input() canMoveToPreviousState: boolean | undefined;
+  @Input() isLastState!: boolean;
+  @Input() isCurrentStepValid!: boolean;
+  @Input() canMoveToPreviousState!: boolean;
 
   @Output() moveToPreviousStateEvent = new EventEmitter<void>;
   @Output() moveToNextStateEvent = new EventEmitter<void>;
