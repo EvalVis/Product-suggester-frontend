@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {Product} from "../models/product.model";
-import {ProductSuggestionService} from "../services/product-suggestion.service";
+import {ProductSuggestionService} from "../services/product.service";
 
 @Component({
   selector: 'app-product',
@@ -11,8 +10,8 @@ export class ProductComponent {
 
   constructor(private productSuggestionService: ProductSuggestionService) {}
 
-  get products() {
-    return this.productSuggestionService.products;
+  get suggestions() {
+    return this.productSuggestionService.suggestions;
   }
 
 }

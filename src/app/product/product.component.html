@@ -1,9 +1,9 @@
 <h1 style="text-align: center">Current product suggestions</h1>
 <div class="product-list">
-  <li style="justify-content: center;" *ngIf="products.length === 0">
+  <li style="justify-content: center;" *ngIf="suggestions.length === 0">
     Currently, there are no product suggestions. Please provide answers to questions in the form.
   </li>
-  <ng-container *ngFor="let product of products">
+  <ng-container *ngFor="let product of suggestions">
     <li style="justify-content: center;">{{product.name}}</li>
     <hr/>
   </ng-container>

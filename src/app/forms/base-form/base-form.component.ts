@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Subject} from "rxjs";
 import {FormGroup} from "@angular/forms";
-import {Answer} from "../../models/answer.model";
 
 @Component({
   selector: 'app-base-form',

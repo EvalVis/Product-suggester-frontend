@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProductSuggestionService} from "../../services/product-suggestion.service";
 import {Router} from "@angular/router";
-import {BaseFormComponent} from "../../forms/base-form/base-form.component";
-import {Answer} from "../../models/answer.model";
+import {ProductSuggestionService} from "../../services/product.service";
 
 @Component({
   selector: 'app-questions-form',
@@ -31,11 +29,11 @@ export class QuestionsFormComponent {
   onSubmitForm(): void {
     // @ts-ignore
     let formResult = this.questionsForm.value;
-    const answer = new Answer(
-      formResult['ageRangeControl'],
-      formResult['isStudyingControl'] == "Yes",
-      formResult['incomeRangeControl']);
-    this.productSuggestionService.getSuggestions(answer);
+    this.productSuggestionService.getSuggestions({
+      "ageRange": formResult[this.formControlNames[0]],
+      "studying": formResult[this.formControlNames[1]] == "Yes",
+      "incomeRange": formResult[this.formControlNames[2]]
+    });
     this.router.navigate(["/product/suggestions"]);
   }
 
