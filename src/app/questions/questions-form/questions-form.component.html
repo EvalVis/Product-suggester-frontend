@@ -1,9 +1,9 @@
 <app-progress-chain [stepNames]="stepNames" [selectedChainMember]="formProgressState"></app-progress-chain>
 <form class="questions-form" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
-  <app-questions
+  <app-questions *ngIf="questionsForm.get(formControlNames[getCurrentState()])"
                  [question]="questions[getCurrentState()]"
                  [answers]="answers[getCurrentState()]"
-                 [formControlName]="formControlNames[getCurrentState()]"
+                 [formCtrl]="$any(questionsForm.get(formControlNames[getCurrentState()]))"
                  [canShowErrorEvent]="canShowErrorEvent"
                  [isCurrentStepValid]="isCurrentStepValid()">
   </app-questions>

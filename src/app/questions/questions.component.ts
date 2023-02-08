@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ControlContainer, ControlValueAccessor, FormGroupDirective} from "@angular/forms";
+import {Component, Input, OnInit} from '@angular/core';
+import {ControlContainer, FormControl, FormGroupDirective} from "@angular/forms";
 import {Subject} from "rxjs";
 
 @Component({
@@ -13,12 +13,12 @@ import {Subject} from "rxjs";
     }
   ]
 })
-export class QuestionsComponent implements ControlValueAccessor, AfterViewInit, OnChanges, OnInit {
+export class QuestionsComponent implements OnInit {
 
   @Input() question: string | undefined;
   @Input() answers: string[] | undefined;
 
-  @Input() formControlName = "";
+  @Input() formCtrl!: FormControl
 
   @Input() canShowErrorEvent = new Subject<boolean>();
   @Input() isCurrentStepValid: boolean | undefined;
@@ -29,24 +29,6 @@ export class QuestionsComponent implements ControlValueAccessor, AfterViewInit, 
     this.canShowErrorEvent.subscribe(status => {
       this.canShowErrorMessage = status;
     });
-  }
-
-  ngAfterViewInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-  }
-
-  registerOnChange(fn: any): void {
-  }
-
-  registerOnTouched(fn: any): void {
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-  }
-
-  writeValue(obj: any): void {
   }
 
 }

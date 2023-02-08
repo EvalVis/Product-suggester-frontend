@@ -17,7 +17,6 @@ export class ProductSuggestionService {
   getSuggestions(answer: Answer) {
     let answerWithoutClassHeader =
       {"ageRange": answer.ageRange, "studying": answer.isStudying, "incomeRange": answer.incomeRange};
-    console.log(answerWithoutClassHeader);
     let result = this.http.post<Product[]>(this.productSuggestionsUrl, answerWithoutClassHeader);
     result.subscribe(products => this.products = products);
     return result;

@@ -2,7 +2,7 @@
 <hr/>
 <div class="questions-padding" *ngFor="let answer of answers">
   <label class="radio-box">
-    <input type="radio" [value]="answer" [formControlName]="formControlName" />
+    <input type="radio" [value]="answer" [formControl]="formCtrl" />
     <span>{{answer}}</span>
   </label>
 </div>
