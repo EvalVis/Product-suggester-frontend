@@ -9,7 +9,7 @@ export class ProductSuggestionService {
 
   products: Product[] = [];
 
-  productSuggestionsUrl = 'http://localhost:8080/product-suggestions/';
+  productSuggestionsUrl = 'http://localhost:8080/suggestions/';
   constructor(private http: HttpClient) {
 
   }
@@ -17,6 +17,7 @@ export class ProductSuggestionService {
   getSuggestions(answer: Answer) {
     let answerWithoutClassHeader =
       {"ageRange": answer.ageRange, "studying": answer.isStudying, "incomeRange": answer.incomeRange};
+    console.log(answerWithoutClassHeader);
     let result = this.http.post<Product[]>(this.productSuggestionsUrl, answerWithoutClassHeader);
     result.subscribe(products => this.products = products);
     return result;

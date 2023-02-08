@@ -1,1 +1,17 @@
-<p>questions-form works!</p>
+<app-progress-chain [stepNames]="stepNames" [selectedChainMember]="formProgressState"></app-progress-chain>
+<form class="questions-form" [formGroup]="questionsForm" (ngSubmit)="submitForm()">
+  <app-questions
+                 [question]="questions[getCurrentState()]"
+                 [answers]="answers[getCurrentState()]"
+                 [formControlName]="formControlNames[getCurrentState()]"
+                 [canShowErrorEvent]="canShowErrorEvent"
+                 [isCurrentStepValid]="isCurrentStepValid()">
+  </app-questions>
+  <hr/>
+  <app-buttons [isLastState]="isLastState()"
+               [isCurrentStepValid]="isCurrentStepValid()"
+               [canMoveToPreviousState]="canMoveToPreviousState()"
+               (moveToPreviousStateEvent)="moveToPreviousState()"
+               (moveToNextStateEvent)="moveToNextState()">
+  </app-buttons>
+</form>

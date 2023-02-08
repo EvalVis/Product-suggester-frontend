@@ -1,102 +1,52 @@
-import {Component, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProductSuggestionService} from "../services/product-suggestion.service";
-import {Answer} from "../models/answer.model";
+import {AfterViewInit, Component, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ControlContainer, ControlValueAccessor, FormGroupDirective} from "@angular/forms";
 import {Subject} from "rxjs";
-import {Product} from "../models/product.model";
-import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-questions-form',
+  selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.scss']
+  styleUrls: ['./questions.component.scss'],
+  viewProviders: [
+    {
+      provide: ControlContainer,
+      useExisting: FormGroupDirective
+    }
+  ]
 })
-export class QuestionsComponent {
+export class QuestionsComponent implements ControlValueAccessor, AfterViewInit, OnChanges, OnInit {
 
-  canShowErrorMessage: boolean = false;
-  ageRanges = ["0-17", "18-64", "65+"];
-  studyingStatuses = [true, false];
-  incomeRanges = ["0", "1-12000", "12001-40000", "40001+"];
+  @Input() question: string | undefined;
+  @Input() answers: string[] | undefined;
 
-  formProgressState : FormProgressState;
+  @Input() formControlName = "";
 
-  questionsForm: FormGroup;
+  @Input() canShowErrorEvent = new Subject<boolean>();
+  @Input() isCurrentStepValid: boolean | undefined;
 
-  constructor(private formBuilder: FormBuilder, private productSuggestionService: ProductSuggestionService,
-              private router: Router) {
-    this.formProgressState = FormProgressState.AGE;
+  canShowErrorMessage = false;
 
-    this.questionsForm = this.formBuilder.group({
-      ageRangeControl: ["", [Validators.required]],
-      isStudyingControl: ["", [Validators.required]],
-      incomeRangeControl: ["", [Validators.required]],
+  ngOnInit(): void {
+    this.canShowErrorEvent.subscribe(status => {
+      this.canShowErrorMessage = status;
     });
   }
 
-  submitForm(): void {
-    if(!this.isCurrentStepValid()) {
-      this.canShowErrorMessage = true;
-      return;
-    }
-    this.canShowErrorMessage = false;
-    let formResult = this.questionsForm.value;
-    const answer = new Answer(
-      formResult['ageRangeControl'],
-      formResult['isStudyingControl'],
-      formResult['incomeRangeControl']);
-    this.productSuggestionService.getSuggestions(answer);
-    this.router.navigate(["/product/suggestions"]);
+  ngAfterViewInit(): void {
   }
 
-  moveToNextState(): void {
-    this.canShowErrorMessage = true;
-    if(this.canMoveToNextState()) {
-      this.canShowErrorMessage = false;
-      this.formProgressState++;
-    }
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
-  moveToPreviousState(): void {
-    if(this.canMoveToPreviousState()) {
-      this.formProgressState--;
-    }
+  registerOnChange(fn: any): void {
   }
 
-  canMoveToNextState(): boolean {
-    return this.isCurrentStepValid() && !this.isLastState();
+  registerOnTouched(fn: any): void {
   }
 
-  canMoveToPreviousState(): boolean {
-    return this.formProgressState !== FormProgressState.AGE;
+  setDisabledState(isDisabled: boolean): void {
   }
 
-  isLastState(): boolean {
-    return this.formProgressState === FormProgressState.INCOME
+  writeValue(obj: any): void {
   }
 
-  isCurrentStepValid(): boolean {
-    if(this.formProgressState === FormProgressState.AGE) {
-      // @ts-ignore
-      return this.questionsForm.get('ageRangeControl').valid;
-    }
-    else if(this.formProgressState === FormProgressState.STUDYING) {
-      // @ts-ignore
-      return this.questionsForm.get('isStudyingControl').valid;
-    }
-    // @ts-ignore
-    return this.questionsForm.get('incomeRangeControl').valid;
-  }
-
-  getFormProgressStates() {
-    return FormProgressState;
-  }
-
-  get stepNames() {
-    return ['Age', 'Studies', 'Income'];
-  }
-
-}
-
-enum FormProgressState {
-  AGE, STUDYING, INCOME
 }
