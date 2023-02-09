@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
+## Building and running from CLI first time
+On windows you may need to run:
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+After that you can run:
+```
+npm install -g @angular/cli
+npm install
+ng serve --open
+```
+The server should start. For the complete functionality to work, you need to setup the backend part: https://github.com/EvalVis/Product-suggester-backend.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
