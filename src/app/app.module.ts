@@ -9,7 +9,7 @@ import { ProgressChainComponent } from './shared/progress-chain/progress-chain.c
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
-import { QuestionsFormComponent } from './questions/questions-form/questions-form.component';
+import { QuestionsFormComponent } from './forms/questions-form/questions-form.component';
 import { ButtonsComponent } from './forms/buttons/buttons.component';
 import { CreateProductFormComponent } from './forms/create-product-form/create-product-form.component';
 import {BaseFormComponent} from "./forms/base-form/base-form.component";

@@ -27,7 +27,6 @@ export class QuestionsFormComponent {
   }
 
   onSubmitForm(): void {
-    // @ts-ignore
     let formResult = this.questionsForm.value;
     this.productSuggestionService.getSuggestions({
       "ageRange": formResult[this.formControlNames[0]],
