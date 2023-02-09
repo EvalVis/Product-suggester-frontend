@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
 ## Building and running from CLI first time
-On Windows you may need to run:
+You will need the most recent version of Node.js: https://nodejs.org/en/download/.
+After the successfull installation of Node.js if you are using Windows, you may need to run:
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
